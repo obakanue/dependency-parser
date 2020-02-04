@@ -1,17 +1,11 @@
 # Simple dependency parser find-deps
 This simple dependency parser CLI-tool is used to find dependencies for .json- and .lock-files.
 
-![Screenshot of generated tables](https://i.imgur.com/UQTrY0s.png)
+![Screenshot of generated tables](https://i.imgur.com/UQTrY0s.png=250x250)
 
 ## Installation
 ```
 git clone git://github.com/obakanue/dependency-parser.git
-```
-Using the terminal in the directory of the dependency-parser execute the following:
-```
- composer require symfony/string
- composer require symfony/finder
-
 ```
 
 ## Usage
