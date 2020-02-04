@@ -45,10 +45,10 @@ class FindDepsCommand extends Command
         $filespath = $input->getArgument('filespath');
         if(is_dir($filespath)){
             $finder->files()->in($filespath)->name('/^.*\.(lock|json)$/');
-        } elseif(!isset($filepath)){
+        } elseif(!isset($filespath)){
             $finder->files()->in(__DIR__)->name('/^.*\.(lock|json)$/');
         } else{
-            $output->writeln("${filespath} is not a valid directory/file-path. Please verify correct path before trying command again.");
+            $output->writeln("${filespath} is not a valid directory-path. Please verify correct path before trying command again.");
             return 0;
         }
         foreach($finder as $file){
@@ -83,11 +83,15 @@ class FindDepsCommand extends Command
         $rows = array();
         $tables = array();
         $contentAsJson = json_decode($fileContent, true);
-        foreach ($contentAsJson["dependencies"] as $product => $version) {
-            array_push($rows, [$product, $version]);
+        if(strpos($fileContent, 'dependencies') !== false){
+            foreach ($contentAsJson["dependencies"] as $product => $version) {
+                array_push($rows, [$product, $version]);
+            }
         }
-        foreach ($contentAsJson["devDependencies"] as $product => $version) {
-            array_push($devRows, [$product, $version]);
+        if(strpos($fileContent, 'devDependencies') !== false){
+            foreach ($contentAsJson["devDependencies"] as $product => $version) {
+                array_push($devRows, [$product, $version]);
+            }
         }
         array_push($tables, $devRows);
         array_push($tables, $rows);
@@ -102,14 +106,15 @@ class FindDepsCommand extends Command
     private function _getLockDependencies($fileContent)
     {
         $rows = array();
-        $fileContent = strstr($fileContent, "DEPENDENCIES");
-        $fileContent = strstr($fileContent, "\n\n", true);
-        $fileContent = strstr($fileContent, "\n");
-        $fileContent = explode("\n", $fileContent);
-        foreach($fileContent as $row){
-            array_push($rows, explode(" ", ltrim($row), 2));
+        if(strpos($fileContent, 'DEPENDENCIES') !== false){
+            $fileContent = strstr($fileContent, "DEPENDENCIES");
+            $fileContent = strstr($fileContent, "\n\n", true);
+            $fileContent = strstr($fileContent, "\n");
+            $fileContent = explode("\n", $fileContent);
+            foreach($fileContent as $row){
+                array_push($rows, explode(" ", ltrim($row), 2));
+            }
         }
-
         return $rows;
     }
 

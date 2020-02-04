@@ -12,4 +12,7 @@ git clone git://github.com/obakanue/dependency-parser.git
 ```
 php bin/console.php app:find-deps [OPTIONAL: SOME-DIRECTORY-PATH]
 ```
-This command will, if valid directory, find all .json- and .lock-files in "SOME-DIRECTORY-PATH" (and its children) and find all dependencies, render a table with product and version number. If no argument is given the parser will look in the current directory (and its children) for files to parse.
+This command will, if valid directory, find all .json- and .lock-files in "SOME-DIRECTORY-PATH" recursively and render a table with product and version number of found dependencies. If no argument is given the parser will look in the current directory for files recursively to parse.
+
+## Testing
+Testfiles folder gives a few different variations of .lock and .json file to test with the command tool.
