@@ -12,4 +12,4 @@ git clone git://github.com/obakanue/dependency-parser.git
 ```
 php bin/console.php app:find-deps [REQARGUMENT: SOME DIRECTORY]
 ```
-This command will, if valid directory, find all .json- and .lock-files in "SOME DIRECTORY" and find all dependencies, render a table with product and version number.
+This command will, if valid directory, find all .json- and .lock-files in "SOME DIRECTORY PATH" and find all dependencies, render a table with product and version number.
