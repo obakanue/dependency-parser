@@ -1,7 +1,7 @@
 # Simple dependency parser find-deps
 This simple dependency parser CLI-tool is used to find dependencies for .json- and .lock-files.
 
-![Screenshot of generated tables](https://i.imgur.com/UQTrY0s.png=250x250)
+![Screenshot of generated tables](https://i.imgur.com/UQTrY0s.png=50x50)
 
 ## Installation
 ```
