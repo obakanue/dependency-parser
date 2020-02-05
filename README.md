@@ -5,7 +5,8 @@ This simple dependency parser CLI-tool is used to find dependencies for .json- a
 
 ## Installation
 ```
-git clone git://github.com/obakanue/dependency-parser.git
+git clone https://github.com/obakanue/dependency-parser.git
+composer install --prefer-source
 ```
 
 ## Usage
